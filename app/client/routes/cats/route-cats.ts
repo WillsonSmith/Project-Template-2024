@@ -44,6 +44,12 @@ export class RouteCats extends LitElement {
                   </li>`,
               );
             },
+            error: () => {
+              return html` <p>
+                There was a problem loading cats. You may not be running the
+                <a href="/api/cats">API</a> server.
+              </p>`;
+            },
           })}
         </ul>
       </main>
