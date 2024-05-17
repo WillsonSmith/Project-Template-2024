@@ -12,7 +12,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/components': path.resolve(__dirname, 'app/client/components'),
+      '@': path.resolve(__dirname, 'app/client'),
     },
   },
   server: {

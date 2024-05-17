@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/components/*": ["./app/client/components/*"]
+      "@/*": ["./app/client/*"]
     },
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
