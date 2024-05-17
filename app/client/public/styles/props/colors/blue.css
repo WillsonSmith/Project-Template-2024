@@ -1,0 +1,13 @@
+:root, :host {
+  --color-blue-950: #172554;
+  --color-blue-900: #1e3a8a;
+  --color-blue-800: #1e40af;
+  --color-blue-700: #0284c7;
+  --color-blue-600: #0284c7;
+  --color-blue-500: #0ea5e9;
+  --color-blue-400: #38bdf8;
+  --color-blue-300: #7dd3fc;
+  --color-blue-200: #bfdbfe;
+  --color-blue-100: #dbeafe;
+  --color-blue-50: #eff6ff;
+}

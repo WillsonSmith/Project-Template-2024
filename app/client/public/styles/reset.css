@@ -11,13 +11,10 @@
   }
 
   html {
-    font-family: var(--sl-font-sans, 'sans-serif');
-    font-size: var(--sl-font-size-medium, 1rem);
-    line-height: var(--sl-line-height-medium, 1.5);
+    line-height: 1.5;
   }
 
   body {
-    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A generic project template for building websites with web components.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "vite": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Willson Smith (me@willsonsmith.com)",

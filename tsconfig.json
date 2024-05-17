@@ -1,21 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/client/*": ["./app/client/*"],
-      "@/util/*": ["./app/client/util/*"],
-      "@/pages/*": ["./app/client/pages/*"],
-      "@/router/*": ["./app/client/router/*"],
-      "@/styles/*": ["./app/client/styles/*"],
-      "@/contexts/*": ["./app/client/contexts/*"],
-      "@/components/*": ["./app/client/components/*"],
-      "@/fc/*": ["./app/client/components/forms/components*"],
-      "@/controllers/*": ["./app/client/controllers/*"],
-
-      "@/shoelace/*": ["./node_modules/@shoelace-style/shoelace/dist/components/*"],
-
-      "@/db/*": ["./app/db/*"],
-      "@/server/*": ["./app/server/*"],
-      "@/api/*": ["./app/server/api/*"]
+      "@/components/*": ["./app/client/components/*"]
     },
     "experimentalDecorators": true,
     "useDefineForClassFields": false,

@@ -1,0 +1,12 @@
+@import url('props.css');
+@import url('reset.css');
+
+
+html, body {
+  background-color: var(--color-neutral-50);
+}
+
+body {
+  color: var(--color-neutral-950);
+  font-family: var(--font-sans);
+}
