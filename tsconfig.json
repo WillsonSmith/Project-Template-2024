@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/client/*": ["./app/client/*"],
+      "@/util/*": ["./app/client/util/*"],
+      "@/pages/*": ["./app/client/pages/*"],
+      "@/router/*": ["./app/client/router/*"],
+      "@/styles/*": ["./app/client/styles/*"],
+      "@/contexts/*": ["./app/client/contexts/*"],
+      "@/components/*": ["./app/client/components/*"],
+      "@/fc/*": ["./app/client/components/forms/components*"],
+      "@/controllers/*": ["./app/client/controllers/*"],
+
+      "@/shoelace/*": ["./node_modules/@shoelace-style/shoelace/dist/components/*"],
+
+      "@/db/*": ["./app/db/*"],
+      "@/server/*": ["./app/server/*"],
+      "@/api/*": ["./app/server/api/*"]
+    },
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "target": "ES2021",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "types": ["bun-types", "mocha"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "plugins": [
+      {
+        "name": "ts-lit-plugin"
+      }
+    ]
+  }
+}
