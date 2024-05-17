@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "bun run --hot app/server/app.tsx",
+    "prod": "NODE_ENV=production bun run app/server/app.tsx",
     "vite": "vite",
+    "build": "vite build",
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "storybook": "storybook dev -p 6006",
@@ -46,7 +48,8 @@
     "ts-lit-plugin": "^2.0.2",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^4.3.2",
+    "bun-types": "latest"
   },
   "dependencies": {
     "@lit-labs/router": "^0.1.3",

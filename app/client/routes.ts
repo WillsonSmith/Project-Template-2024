@@ -30,7 +30,7 @@ export const routes = [
   {
     name: 'Cats',
     path: '/cats',
-    render: () => html`<route-cats count="10"></route-cats>`,
+    render: () => html`<route-cats count="12"></route-cats>`,
     enter: async () => {
       await import('@/routes/cats');
       return true;
