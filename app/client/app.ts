@@ -1,3 +1,5 @@
+import 'vite/modulepreload-polyfill';
+
 import { html, render } from 'lit';
 
 import '@/app-entry';
