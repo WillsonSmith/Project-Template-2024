@@ -10,7 +10,6 @@ export const reset = css`
 
     * {
       margin: 0;
-      padding: 0;
     }
 
     html {
@@ -51,8 +50,8 @@ export const reset = css`
       max-inline-size: 100%;
     }
 
-    ul[role='list'],
-    ol[role='list'] {
+    ul[class],
+    ol[class] {
       list-style: none;
       padding: unset;
       margin: unset;

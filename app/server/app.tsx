@@ -7,6 +7,22 @@ const app = new Hono();
 
 const production = process.env.NODE_ENV === 'production';
 
+app.get('/api/cats', (c) => {
+  const count = Number(c.req.query('count')) || 1;
+  const randomImages = Array.from({ length: count }, () => {
+    const width = Math.round(Math.random() * 100 + 400);
+    const height = Math.round(Math.random() * 100 + 300);
+
+    return {
+      url: `https://loremflickr.com/${width}/${height}/cats`,
+      width,
+      height,
+    };
+  });
+
+  return c.json(randomImages);
+});
+
 app.get('/*', async (c) => {
   let manifest: Record<string, string> = {};
   if (production) {
