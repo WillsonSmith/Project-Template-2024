@@ -2,12 +2,13 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+const production = process.env.NODE_ENV === 'production';
 export default defineConfig({
   root: 'app/client',
   build: {
     manifest: true,
     rollupOptions: {
-      input: 'app/client/app.ts',
+      input: production ? 'app/client/index.html' : 'app/client/app.ts',
     },
   },
   resolve: {

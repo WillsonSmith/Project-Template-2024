@@ -9,6 +9,7 @@
     "prod": "NODE_ENV=production bun run app/server/app.tsx",
     "vite": "vite",
     "build": "vite build",
+    "build:client-only": "NODE_ENV=production vite build",
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "storybook": "storybook dev -p 6006",
