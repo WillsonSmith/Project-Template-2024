@@ -33,17 +33,17 @@ export class NavButton extends LitElement {
       background-color: var(--active-bg-color);
     }
 
-    a:hover{
+    a:hover {
       background-color: var(--hover-bg-color);
     }
 
-    a:focus{
+    a:focus {
       outline: none;
       border-color: var(--focus-border-color);
       background-color: var(--focus-bg-color);
     }
 
-    span{
+    span {
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -54,4 +54,9 @@ export class NavButton extends LitElement {
       <a href=${this.href} title=${this.title}><span><slot></slot></span></a>
     `
   }
+
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true
+  };
 }
