@@ -1,9 +1,14 @@
 import { html, render } from 'lit';
 
-import '@/components/nav-button';
+import '@/app-entry';
 
-render(
-  html`<h1>Hello, world</h1>
-    <div><nav-button href="/">Home</nav-button></div>`,
-  document.getElementById('app')!,
-);
+// @ts-expect-error: Property 'UrlPattern' does not exist
+if (!globalThis.URLPattern) {
+  import('urlpattern-polyfill').then(() => {
+    const App = () => {
+      return html`<app-entry></app-entry>`;
+    };
+
+    render(App(), document.getElementById('app')!);
+  });
+}
