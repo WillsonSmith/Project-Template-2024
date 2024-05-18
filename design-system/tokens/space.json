@@ -1,0 +1,12 @@
+{
+  "3xs": { "$value": "0.125rem", "$type": "size" },
+  "2xs": { "$value": "0.25rem", "$type": "size" },
+  "xs": { "$value": "0.5rem", "$type": "size" },
+  "sm": { "$value": "0.75rem", "$type": "size" },
+  "md": { "$value": "1rem", "$type": "size" },
+  "lg": { "$value": "1.25rem", "$type": "size" },
+  "xl": { "$value": "1.75rem", "$type": "size" },
+  "2xl": { "$value": "2.25rem", "$type": "size" },
+  "3xl": { "$value": "3rem", "$type": "size" },
+  "4xl": { "$value": "4.5rem", "$type": "size" }
+}

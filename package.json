@@ -13,7 +13,8 @@
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "generate:props": "bun run ./design-system/generators.ts"
   },
   "author": "Willson Smith (me@willsonsmith.com)",
   "license": "MIT",

@@ -1,0 +1,14 @@
+{
+  "sans": {
+    "$value": "-apple-system, BlinkMacSystemFont, ‘Segoe UI’, Roboto, Helvetica, Arial, sans-serif, ‘Apple Color Emoji’, ‘Segoe UI Emoji’, ‘Segoe UI Symbol’",
+    "$type": "fontFamily"
+  },
+  "serif": {
+    "$value": "Georgia, ‘Times New Roman’, serif",
+    "$type": "fontFamily"
+  },
+  "mono": {
+    "$value": "SFMono-Regular, Consolas, ‘Liberation Mono’, Menlo, monospace",
+    "$type": "fontFamily"
+  }
+}
