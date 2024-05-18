@@ -2,6 +2,8 @@ import { readdir } from 'node:fs/promises';
 
 import { generateCSSVariables, parseTokens } from './token-parser';
 
+const args = process.argv;
+
 const tokens = (
   await readdir(import.meta.dir + '/./tokens', {
     recursive: true,
@@ -14,12 +16,26 @@ const tokens = (
   .map((token) => token.name)
   .map((name) => name.split('/'));
 
-const all = await parseTokens(tokens);
+async function run(args: string[]) {
+  console.log(args[2]);
+  const type = args[2];
+  switch (type) {
+    case 'props':
+      await generateProps(process.cwd() + '/' + args[3]);
+      break;
+    default:
+      console.log('No provided type');
+  }
+}
 
-const propdir = process.cwd() + '/app/client/public/styles/props.css';
-
-const output = `:root, :host {\n
+await run(args);
+export async function generateProps(
+  dir = process.cwd() + '/app/client/public/styles/props.css',
+) {
+  const all = await parseTokens(tokens);
+  const output = `:root, :host {\n
 ${generateCSSVariables(all)}
 }\n`;
 
-Bun.write(propdir, output);
+  Bun.write(dir, output);
+}

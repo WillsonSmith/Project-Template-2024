@@ -14,7 +14,7 @@
     "test:watch": "web-test-runner --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "generate:props": "bun run ./design-system/generators.ts"
+    "generate:props": "bun run ./design-system/generators.ts props app/client/public/styles/props.css"
   },
   "author": "Willson Smith (me@willsonsmith.com)",
   "license": "MIT",
