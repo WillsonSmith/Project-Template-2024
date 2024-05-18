@@ -26,23 +26,21 @@ export class RouteCats extends LitElement {
       <main class="route-cats">
         <ul class="cat-list">
           ${this.cats.render({
-            pending: () => {
-              return html`Loading cats...`;
-            },
             complete: (
               cats: { url: string; width: number; height: number }[],
             ) => {
-              return cats.map(
-                (cat) =>
-                  html`<li>
-                    <img
-                      alt="A cat"
-                      src=${cat.url}
-                      width=${cat.width}
-                      height=${cat.height}
-                    />
-                  </li>`,
-              );
+              return cats.map((cat) => {
+                return html`<li>
+                  <img
+                    alt="A cat"
+                    loading="lazy"
+                    src=${cat.url}
+                    width=${cat.width}
+                    height=${cat.height}
+                    @load=${this.onImageLoad}
+                  />
+                </li>`;
+              });
             },
             error: () => {
               return html` <p>
@@ -54,6 +52,11 @@ export class RouteCats extends LitElement {
         </ul>
       </main>
     `;
+  }
+
+  onImageLoad(event: Event) {
+    const target = event.target as HTMLImageElement;
+    target.classList.add('loaded');
   }
 
   static styles = css`
@@ -78,15 +81,41 @@ export class RouteCats extends LitElement {
       max-inline-size: 80ch;
     }
 
+    @keyframes enter {
+      0% {
+        opacity: 0;
+        translate: 0px -8px;
+      }
+
+      50% {
+        opacity: 60%;
+        translate: 0px 0px;
+      }
+
+      100% {
+        opacity: 1;
+        translate: 0px 0px;
+      }
+    }
+
     li {
       display: flex;
+      background-color: var(--color-neutral-200);
       border-radius: var(--radius-lg);
       overflow: hidden;
+
+      animation: 1s linear enter;
     }
 
     img {
       height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 250ms ease-in;
+
+      &.loaded {
+        opacity: 1;
+      }
     }
   `;
 }
