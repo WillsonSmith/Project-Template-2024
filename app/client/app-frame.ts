@@ -14,6 +14,7 @@ export class AppFrame extends LitElement {
     ${reset}
     :host {
       display: block;
+      height: 100%;
     }
     nav {
       max-inline-size: 100%;
