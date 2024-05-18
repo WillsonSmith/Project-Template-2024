@@ -11,7 +11,7 @@
     "$value": "SFMono-Regular, Consolas, ‘Liberation Mono’, Menlo, monospace",
     "$type": "fontFamily"
   },
-  "dimension": {
+  "size": {
     "2xs": {
       "$value": "0.625rem",
       "$type": "dimension"

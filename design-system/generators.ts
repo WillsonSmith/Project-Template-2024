@@ -23,6 +23,7 @@ async function run(args: string[]) {
       await generateProps(process.cwd() + '/' + args[3]);
       break;
     default:
+      // runDefault();
       console.log('No provided type');
   }
 }
@@ -37,4 +38,14 @@ ${generateCSSVariables(all)}
 }\n`;
 
   Bun.write(dir, output);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function runDefault() {
+  const t = await parseTokens(tokens);
+  const e = Object.entries(t);
+  for (const tokenSet of e) {
+    const toWorkWith = Object.fromEntries([tokenSet]);
+    console.log(generateCSSVariables(toWorkWith));
+  }
 }
