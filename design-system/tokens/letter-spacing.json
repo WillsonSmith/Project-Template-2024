@@ -1,0 +1,22 @@
+{
+  "tighter": {
+    "$value": "-0.03em",
+    "$type": "dimension"
+  },
+  "tight": {
+    "$value": "-0.015em",
+    "$type": "dimension"
+  },
+  "normal": {
+    "$value": "normal",
+    "$type": "dimension"
+  },
+  "loose": {
+    "$value": "0.075em",
+    "$type": "dimension"
+  },
+  "looser": {
+    "$value": "0.15em",
+    "$type": "dimension"
+  }
+}

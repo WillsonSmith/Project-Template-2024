@@ -17,7 +17,6 @@ const tokens = (
   .map((name) => name.split('/'));
 
 async function run(args: string[]) {
-  console.log(args[2]);
   const type = args[2];
   switch (type) {
     case 'props':

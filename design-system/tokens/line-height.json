@@ -1,0 +1,22 @@
+{
+  "tighter": {
+    "$value": 1,
+    "$type": "number"
+  },
+  "tight": {
+    "$value": 1.4,
+    "$type": "number"
+  },
+  "normal": {
+    "$value": 1.8,
+    "$type": "number"
+  },
+  "loose": {
+    "$value": 2.2,
+    "$type": "number"
+  },
+  "looser": {
+    "$value": 2.6,
+    "$type": "number"
+  }
+}

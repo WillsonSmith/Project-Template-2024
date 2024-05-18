@@ -98,6 +98,11 @@
   --space-2xl: 2.25rem;
   --space-3xl: 3rem;
   --space-4xl: 4.5rem;
+  --letter-spacing-tighter: -0.03em;
+  --letter-spacing-tight: -0.015em;
+  --letter-spacing-normal: normal;
+  --letter-spacing-loose: 0.075em;
+  --letter-spacing-looser: 0.15em;
   --radius-md: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-xl: 1rem;
@@ -107,4 +112,22 @@
     Arial, sans-serif, ‘Apple Color Emoji’, ‘Segoe UI Emoji’, ‘Segoe UI Symbol’;
   --font-serif: Georgia, ‘Times New Roman’, serif;
   --font-mono: SFMono-Regular, Consolas, ‘Liberation Mono’, Menlo, monospace;
+  --font-dimension-2xs: 0.625rem;
+  --font-dimension-xs: 0.75rem;
+  --font-dimension-sm: 0.875rem;
+  --font-dimension-md: 1rem;
+  --font-dimension-lg: 1.25rem;
+  --font-dimension-xl: 1.5rem;
+  --font-dimension-2xl: 2.25rem;
+  --font-dimension-3xl: 3rem;
+  --font-dimension-4xl: 4.5rem;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+  --line-height-tighter: 1;
+  --line-height-tight: 1.4;
+  --line-height-normal: 1.8;
+  --line-height-loose: 2.2;
+  --line-height-looser: 2.6;
 }
