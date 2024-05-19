@@ -9,12 +9,14 @@ export const styles = css`
     justify-content: center;
     inline-size: 100%;
   }
+
   .page {
-    min-inline-size: 0;
+    inline-size: 100%;
     max-inline-size: 80ch;
   }
+
   cat-gallery {
-    min-inline-size: 0;
+    inline-size: 100%;
   }
 `;
 
@@ -22,11 +24,22 @@ export const Page = () => {
   // enable bundle splitting for heavy components
   import('./cats/cat-gallery');
 
+  const colorOptions: (keyof typeof props.color)[] = [
+    'red',
+    'orange',
+    'yellow',
+    'green',
+  ];
+
+  const selected =
+    colorOptions[Math.floor(Math.random() * colorOptions.length)];
+
   return html`
     <main
       style=${styleMap({
+        // I would like to make these css`` template tags.
         background: props.color.neutral['100'],
-        color: props.color.indigo['700'],
+        color: props.color[selected]['700'],
         padding: props.space.md,
       })}
     >
@@ -36,7 +49,7 @@ export const Page = () => {
             lineHeight: props['line-height'].tighter,
           })}
         >
-          Welcome to the cat gallery!
+          Cat gallery
         </h1>
         <cat-gallery count=${12}></cat-gallery>
       </div>

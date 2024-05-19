@@ -20,11 +20,16 @@ export const routes = [
   {
     name: 'Cats',
     path: '/cats',
-    render: () => html`
-      <style>
-        ${cats.styles}
-      </style>
-      ${cats.Page()}
-    `,
+    render: () => r(cats),
   },
 ];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function r(m: any) {
+  return html`
+    <style>
+      ${m.styles}
+    </style>
+    ${m.Page()}
+  `;
+}
