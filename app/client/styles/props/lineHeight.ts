@@ -9,14 +9,6 @@ export const lineHeightValues = {
 };
 
 export const lineHeight = {
-  tighter: 'var(--line-height-tighter)',
-  tight: 'var(--line-height-tight)',
-  normal: 'var(--line-height-normal)',
-  loose: 'var(--line-height-loose)',
-  looser: 'var(--line-height-looser)',
-};
-
-export const lineHeightTags = {
   tighter: css`var(--line-height-tighter)`,
   tight: css`var(--line-height-tight)`,
   normal: css`var(--line-height-normal)`,

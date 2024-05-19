@@ -9,14 +9,6 @@ export const radiusValues = {
 };
 
 export const radius = {
-  md: 'var(--radius-md)',
-  lg: 'var(--radius-lg)',
-  xl: 'var(--radius-xl)',
-  circle: 'var(--radius-circle)',
-  pill: 'var(--radius-pill)',
-};
-
-export const radiusTags = {
   md: css`var(--radius-md)`,
   lg: css`var(--radius-lg)`,
   xl: css`var(--radius-xl)`,

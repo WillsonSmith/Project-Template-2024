@@ -15,20 +15,6 @@ export const redValues = {
 };
 
 export const red = {
-  '50': 'var(--color-red-50)',
-  '100': 'var(--color-red-100)',
-  '200': 'var(--color-red-200)',
-  '300': 'var(--color-red-300)',
-  '400': 'var(--color-red-400)',
-  '500': 'var(--color-red-500)',
-  '600': 'var(--color-red-600)',
-  '700': 'var(--color-red-700)',
-  '800': 'var(--color-red-800)',
-  '900': 'var(--color-red-900)',
-  '950': 'var(--color-red-950)',
-};
-
-export const redTags = {
   '50': css`var(--color-red-50)`,
   '100': css`var(--color-red-100)`,
   '200': css`var(--color-red-200)`,

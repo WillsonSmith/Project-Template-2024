@@ -15,20 +15,6 @@ export const yellowValues = {
 };
 
 export const yellow = {
-  '50': 'var(--color-yellow-50)',
-  '100': 'var(--color-yellow-100)',
-  '200': 'var(--color-yellow-200)',
-  '300': 'var(--color-yellow-300)',
-  '400': 'var(--color-yellow-400)',
-  '500': 'var(--color-yellow-500)',
-  '600': 'var(--color-yellow-600)',
-  '700': 'var(--color-yellow-700)',
-  '800': 'var(--color-yellow-800)',
-  '900': 'var(--color-yellow-900)',
-  '950': 'var(--color-yellow-950)',
-};
-
-export const yellowTags = {
   '50': css`var(--color-yellow-50)`,
   '100': css`var(--color-yellow-100)`,
   '200': css`var(--color-yellow-200)`,

@@ -24,14 +24,6 @@ export const fontValues = {
 };
 
 export const font = {
-  sans: 'var(--font-sans)',
-  serif: 'var(--font-serif)',
-  mono: 'var(--font-mono)',
-  size: 'var(--font-size)',
-  weight: 'var(--font-weight)',
-};
-
-export const fontTags = {
   sans: css`var(--font-sans)`,
   serif: css`var(--font-serif)`,
   mono: css`var(--font-mono)`,

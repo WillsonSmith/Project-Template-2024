@@ -8,7 +8,7 @@ export const styles = css`
   main {
     display: flex;
     justify-content: center;
-    background-color: ${props.color.neutralTags['100']};
+    background-color: ${props.color.neutral['100']};
 
     padding: var(--space-md);
     inline-size: 100%;
