@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 
+import * as props from '@/styles/props';
 import { reset } from '@/styles/reset.styles';
 
 export const styles = css`
@@ -7,7 +8,7 @@ export const styles = css`
   main {
     display: flex;
     justify-content: center;
-    background-color: var(--color-neutral-100);
+    background-color: ${props.color.neutralTags['100']};
 
     padding: var(--space-md);
     inline-size: 100%;

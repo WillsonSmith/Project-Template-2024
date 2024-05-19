@@ -1,4 +1,6 @@
-export const font = {
+import { css } from 'lit';
+
+export const fontValues = {
   sans: '-apple-system, BlinkMacSystemFont, ‘Segoe UI’, Roboto, Helvetica, Arial, sans-serif, ‘Apple Color Emoji’, ‘Segoe UI Emoji’, ‘Segoe UI Symbol’',
   serif: 'Georgia, ‘Times New Roman’, serif',
   mono: 'SFMono-Regular, Consolas, ‘Liberation Mono’, Menlo, monospace',
@@ -19,4 +21,20 @@ export const font = {
     semibold: 500,
     bold: 700,
   },
+};
+
+export const font = {
+  sans: 'var(--font-sans)',
+  serif: 'var(--font-serif)',
+  mono: 'var(--font-mono)',
+  size: 'var(--font-size)',
+  weight: 'var(--font-weight)',
+};
+
+export const fontTags = {
+  sans: css`var(--font-sans)`,
+  serif: css`var(--font-serif)`,
+  mono: css`var(--font-mono)`,
+  size: css`var(--font-size)`,
+  weight: css`var(--font-weight)`,
 };

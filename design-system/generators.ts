@@ -100,17 +100,25 @@ async function generateFiles(obj: any, dir: string) {
               const colorValue = reshapeTokens(value[color]);
               const colorCamelCase = toCamelCase(color);
               const colorFilePath = `${colorDir}/${colorCamelCase}.ts`;
-              const colorContent = `export const ${colorCamelCase} = ${JSON.stringify(
+              const colorContent = `import {css} from 'lit';\n\nexport const ${colorCamelCase}Values = ${JSON.stringify(
                 colorValue,
                 null,
                 2,
-              )};\n`;
+              )};\n\nexport const ${colorCamelCase} = ${JSON.stringify(
+                transformColorValuesToCSSVars(
+                  'color',
+                  colorCamelCase,
+                  colorValue,
+                ),
+                null,
+                2,
+              )};\n\nexport const ${colorCamelCase}Tags = ${generateColorCssTags('color', colorCamelCase, colorValue)};\n`;
               await writeFile(colorFilePath, colorContent);
 
               // Update color index file
               const colorIndexPath = `${colorDir}/index.ts`;
               const importPath = `./${colorCamelCase}`;
-              const exportContent = `export { ${colorCamelCase} } from '${importPath}';\n`;
+              const exportContent = `export { ${colorCamelCase}, ${colorCamelCase}Values, ${colorCamelCase}Tags } from '${importPath}';\n`;
               await appendFile(colorIndexPath, exportContent);
             }
           }
@@ -118,22 +126,26 @@ async function generateFiles(obj: any, dir: string) {
           // Update main index file
           const mainIndexPath = `${dir}/index.ts`;
           const mainImportPath = `./color`;
-          const mainExportContent = `export * from '${mainImportPath}';\n`;
+          const mainExportContent = `export * as color from '${mainImportPath}';\n`;
           await appendFile(mainIndexPath, mainExportContent);
         } else {
           const reshapedValue = reshapeTokens(value);
-          const content = `export const ${camelCaseKey} = ${JSON.stringify(
+          const content = `import {css} from 'lit';\n\nexport const ${camelCaseKey}Values = ${JSON.stringify(
             reshapedValue,
             null,
             2,
-          )};\n`;
+          )};\n\nexport const ${camelCaseKey} = ${JSON.stringify(
+            transformValuesToCSSVars(key, reshapedValue),
+            null,
+            2,
+          )};\n\nexport const ${camelCaseKey}Tags = ${generateCssTags(key, reshapedValue)};\n`;
           const filePath = `${dir}/${camelCaseKey}.ts`;
           await writeFile(filePath, content);
 
           // Update main index file
           const mainIndexPath = `${dir}/index.ts`;
           const importPath = `./${camelCaseKey}`;
-          const exportContent = `export { ${camelCaseKey} } from '${importPath}';\n`;
+          const exportContent = `export { ${camelCaseKey}, ${camelCaseKey}Values, ${camelCaseKey}Tags } from '${importPath}';\n`;
           await appendFile(mainIndexPath, exportContent);
         }
       }
@@ -169,6 +181,54 @@ function reshapeTokens(obj: any) {
   }
 
   return result;
+}
+
+function transformValuesToCSSVars(parentKey: string, obj: any) {
+  const result: any = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = `var(--${parentKey}-${key})`;
+    }
+  }
+  return result;
+}
+
+function transformColorValuesToCSSVars(
+  parentKey: string,
+  colorKey: string,
+  obj: any,
+) {
+  const result: any = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = `var(--${parentKey}-${colorKey}-${key})`;
+    }
+  }
+  return result;
+}
+
+function generateCssTags(parentKey: string, obj: any) {
+  const result: any = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = `css\`var(--${parentKey}-${key})\``;
+    }
+  }
+  return JSON.stringify(result, null, 2)
+    .replace(/"css`/g, 'css`')
+    .replace(/`"/g, '`');
+}
+
+function generateColorCssTags(parentKey: string, colorKey: string, obj: any) {
+  const result: any = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = `css\`var(--${parentKey}-${colorKey}-${key})\``;
+    }
+  }
+  return JSON.stringify(result, null, 2)
+    .replace(/"css`/g, 'css`')
+    .replace(/`"/g, '`');
 }
 
 async function parseTokens(arrays: string[][]) {

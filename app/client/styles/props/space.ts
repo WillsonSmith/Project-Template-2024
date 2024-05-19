@@ -1,4 +1,6 @@
-export const space = {
+import { css } from 'lit';
+
+export const spaceValues = {
   '3xs': '0.125rem',
   '2xs': '0.25rem',
   xs: '0.5rem',
@@ -9,4 +11,30 @@ export const space = {
   '2xl': '2.25rem',
   '3xl': '3rem',
   '4xl': '4.5rem',
+};
+
+export const space = {
+  '3xs': 'var(--space-3xs)',
+  '2xs': 'var(--space-2xs)',
+  xs: 'var(--space-xs)',
+  sm: 'var(--space-sm)',
+  md: 'var(--space-md)',
+  lg: 'var(--space-lg)',
+  xl: 'var(--space-xl)',
+  '2xl': 'var(--space-2xl)',
+  '3xl': 'var(--space-3xl)',
+  '4xl': 'var(--space-4xl)',
+};
+
+export const spaceTags = {
+  '3xs': css`var(--space-3xs)`,
+  '2xs': css`var(--space-2xs)`,
+  xs: css`var(--space-xs)`,
+  sm: css`var(--space-sm)`,
+  md: css`var(--space-md)`,
+  lg: css`var(--space-lg)`,
+  xl: css`var(--space-xl)`,
+  '2xl': css`var(--space-2xl)`,
+  '3xl': css`var(--space-3xl)`,
+  '4xl': css`var(--space-4xl)`,
 };

@@ -1,4 +1,6 @@
-export const blue = {
+import { css } from 'lit';
+
+export const blueValues = {
   '50': '#eff6ff',
   '100': '#dbeafe',
   '200': '#bfdbfe',
@@ -10,4 +12,32 @@ export const blue = {
   '800': '#1e40af',
   '900': '#1e3a8a',
   '950': '#172554',
+};
+
+export const blue = {
+  '50': 'var(--color-blue-50)',
+  '100': 'var(--color-blue-100)',
+  '200': 'var(--color-blue-200)',
+  '300': 'var(--color-blue-300)',
+  '400': 'var(--color-blue-400)',
+  '500': 'var(--color-blue-500)',
+  '600': 'var(--color-blue-600)',
+  '700': 'var(--color-blue-700)',
+  '800': 'var(--color-blue-800)',
+  '900': 'var(--color-blue-900)',
+  '950': 'var(--color-blue-950)',
+};
+
+export const blueTags = {
+  '50': css`var(--color-blue-50)`,
+  '100': css`var(--color-blue-100)`,
+  '200': css`var(--color-blue-200)`,
+  '300': css`var(--color-blue-300)`,
+  '400': css`var(--color-blue-400)`,
+  '500': css`var(--color-blue-500)`,
+  '600': css`var(--color-blue-600)`,
+  '700': css`var(--color-blue-700)`,
+  '800': css`var(--color-blue-800)`,
+  '900': css`var(--color-blue-900)`,
+  '950': css`var(--color-blue-950)`,
 };

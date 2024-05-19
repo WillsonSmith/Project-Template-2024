@@ -1,4 +1,6 @@
-export const neutral = {
+import { css } from 'lit';
+
+export const neutralValues = {
   '50': '#fafafa',
   '100': '#f5f5f5',
   '200': '#e5e5e5',
@@ -10,4 +12,32 @@ export const neutral = {
   '800': '#262626',
   '900': '#171717',
   '950': '#0a0a0a',
+};
+
+export const neutral = {
+  '50': 'var(--color-neutral-50)',
+  '100': 'var(--color-neutral-100)',
+  '200': 'var(--color-neutral-200)',
+  '300': 'var(--color-neutral-300)',
+  '400': 'var(--color-neutral-400)',
+  '500': 'var(--color-neutral-500)',
+  '600': 'var(--color-neutral-600)',
+  '700': 'var(--color-neutral-700)',
+  '800': 'var(--color-neutral-800)',
+  '900': 'var(--color-neutral-900)',
+  '950': 'var(--color-neutral-950)',
+};
+
+export const neutralTags = {
+  '50': css`var(--color-neutral-50)`,
+  '100': css`var(--color-neutral-100)`,
+  '200': css`var(--color-neutral-200)`,
+  '300': css`var(--color-neutral-300)`,
+  '400': css`var(--color-neutral-400)`,
+  '500': css`var(--color-neutral-500)`,
+  '600': css`var(--color-neutral-600)`,
+  '700': css`var(--color-neutral-700)`,
+  '800': css`var(--color-neutral-800)`,
+  '900': css`var(--color-neutral-900)`,
+  '950': css`var(--color-neutral-950)`,
 };
