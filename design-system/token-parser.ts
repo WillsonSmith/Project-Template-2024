@@ -42,6 +42,39 @@ export async function parseTokens(arrays: string[][]) {
   return result;
 }
 
+export async function parseTokensAsGroups(arrays: string[][]) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const result: { [key: string]: any } = {};
+
+  for (const path of arrays) {
+    let current = result;
+
+    for (let i = 0; i < path.length; i++) {
+      const key = path[i];
+      if (i === path.length - 1) {
+        const fileName = key;
+        const propertyName = fileName.replace('.json', '');
+        if (!fileName.endsWith('.json')) {
+          current[propertyName] = {};
+        } else {
+          const filePath = `${import.meta.dir}/tokens/${path.join('/')}`;
+          const file = Bun.file(filePath);
+          const fileContents = JSON.parse(await file.text());
+
+          // Add the file contents directly to the result object with the file path as the key
+          result[filePath] = fileContents;
+        }
+      } else {
+        if (!current[key]) {
+          current[key] = {};
+        }
+        current = current[key];
+      }
+    }
+  }
+  return result;
+}
+
 export function generateCSSVariables(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   obj: { [key: string]: any },
