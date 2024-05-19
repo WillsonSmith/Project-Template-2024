@@ -6,7 +6,7 @@ type RegisterComponentProperties = {
   [key: string]: unknown;
 };
 
-export function registerComponent(
+export function createComponent(
   name: string,
   { Page, styles, ...properties }: RegisterComponentProperties,
 ) {
@@ -22,7 +22,7 @@ export function registerComponent(
       this.shadowRoot!.appendChild(styleTag);
 
       const componentContainer = document.createElement('div');
-      componentContainer.id = '#app';
+      componentContainer.id = '#component';
       this.shadowRoot!.appendChild(componentContainer);
       render(Page(properties), componentContainer);
     }

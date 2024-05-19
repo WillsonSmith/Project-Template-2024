@@ -1,6 +1,4 @@
-import { html } from 'lit';
-
-import { registerComponent } from '../renderer/route-renderer';
+import { createComponent } from '../renderer/createComponent';
 
 import * as about from './routes/about';
 import * as cats from './routes/cats';
@@ -10,26 +8,16 @@ export const routes = [
   {
     name: 'Home',
     path: '/',
-    render: registerComponent(home.componentName, home),
+    render: createComponent(home.name, home),
   },
   {
     name: 'About',
     path: '/about',
-    render: about.Page,
+    render: createComponent(about.name, about),
   },
   {
     name: 'Cats',
     path: '/cats',
-    render: () => r(cats),
+    render: createComponent(cats.name, cats),
   },
 ];
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function r(m: any) {
-  return html`
-    <style>
-      ${m.styles}
-    </style>
-    ${m.Page()}
-  `;
-}
