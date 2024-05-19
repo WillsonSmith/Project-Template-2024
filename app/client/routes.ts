@@ -1,3 +1,5 @@
+import { html } from 'lit';
+
 import { registerComponent } from '../renderer/route-renderer';
 
 import * as about from './routes/about';
@@ -18,6 +20,11 @@ export const routes = [
   {
     name: 'Cats',
     path: '/cats',
-    render: cats.Page,
+    render: () => html`
+      <style>
+        ${cats.styles}
+      </style>
+      ${cats.Page()}
+    `,
   },
 ];

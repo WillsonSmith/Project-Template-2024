@@ -1,4 +1,6 @@
-/* eslint-disable prefer-const */
+/* eslint-disable */
+
+/* eslint-disable @typescript/elsint */
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { readdir } from 'node:fs/promises';
@@ -40,10 +42,49 @@ async function run(args: string[]) {
 
 await run(args);
 
+const t = await parseTokens(tokens);
+const path = process.cwd() + '/app/client/styles/properties.ts';
+
+// @ts-expect-error lol
+function reshapeTokens(obj) {
+  const result = {};
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const valueObj = obj[key];
+
+      if (
+        valueObj &&
+        typeof valueObj === 'object' &&
+        !Array.isArray(valueObj)
+      ) {
+        // If the object contains a $value property, assign the value directly
+        if ('$value' in valueObj) {
+          // @ts-expect-error lol
+          result[key] = valueObj.$value;
+        } else {
+          // Recursively reshape nested objects
+          // @ts-expect-error lol
+          result[key] = reshapeTokens(valueObj);
+        }
+      } else {
+        // @ts-expect-error lol
+        result[key] = valueObj;
+      }
+    }
+  }
+
+  return result;
+}
+Bun.write(
+  path,
+  `export const props = ${JSON.stringify(reshapeTokens(t), undefined, 2)}`,
+);
+
 async function generateSplitProps(dir: string) {
   const all = await parseTokens(tokens);
+
   let groups = [];
-  // console.log(Object.entries(all));
   for (const [key, values] of Object.entries(all)) {
     console.log(generateCSSVariables(Object.fromEntries([[key, values]])));
     console.log('__________');
