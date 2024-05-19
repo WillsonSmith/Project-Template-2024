@@ -10,7 +10,11 @@ export const styles = css`
     inline-size: 100%;
   }
   .page {
+    min-inline-size: 0;
     max-inline-size: 80ch;
+  }
+  cat-gallery {
+    min-inline-size: 0;
   }
 `;
 
