@@ -4,8 +4,6 @@ import { styleMap } from 'lit/directives/style-map.js';
 import { props } from '@/styles/properties';
 import { reset } from '@/styles/reset.styles';
 
-export const name = 'page-cats';
-
 export const styles = css`
   ${reset}
   main {
@@ -30,7 +28,12 @@ export const styles = css`
   }
 `;
 
-export const Page = () => {
+export const tagName = 'page-cats';
+export type PageProps = {
+  title: string;
+};
+
+export const Page = ({ title = 'Cats!' }: PageProps) => {
   import('./cats/cat-gallery');
 
   const colorOptions: (keyof typeof props.color)[] = [
@@ -50,7 +53,7 @@ export const Page = () => {
       })}
     >
       <div class="page">
-        <h1>Cat gallery</h1>
+        <h1>${title}</h1>
         <cat-gallery count=${12}></cat-gallery>
       </div>
     </main>

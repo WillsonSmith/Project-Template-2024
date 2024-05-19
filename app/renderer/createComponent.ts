@@ -1,36 +1,61 @@
 import { type CSSResult, type TemplateResult, render } from 'lit';
 
-type RegisterComponentProperties = {
-  Page: (properties: { [key: string]: unknown }) => TemplateResult;
+export type ComponentProps<T> = {
+  Page: (properties: T) => TemplateResult;
   styles?: CSSResult;
+  tagName?: string;
+} & {
   [key: string]: unknown;
 };
 
-export function createComponent(
-  name: string,
-  { Page, styles, ...properties }: RegisterComponentProperties,
-) {
+const uniqueId = (() => {
+  let iterator = 0;
+  return (prefix: string) => {
+    return `${prefix}-${iterator++}`;
+  };
+})();
+
+export function createComponent<T extends { [key: string]: unknown }>({
+  Page,
+  styles,
+  tagName,
+  ...properties
+}: ComponentProps<T>) {
+  const typedProperties = properties as T;
+  tagName = tagName || uniqueId(`app-custom-tag`);
+
   class RouteElement extends HTMLElement {
+    private styleContainer = document.createElement('style');
+    private componentContainer = document.createElement('div');
+
     constructor() {
       super();
       this.attachShadow({ mode: 'open' });
+      this.componentContainer.id = '#component';
     }
 
     connectedCallback() {
-      const styleTag = document.createElement('style');
-      render(styles, styleTag);
-      this.shadowRoot!.appendChild(styleTag);
+      const fragment = document.createDocumentFragment();
+      render(styles, this.styleContainer);
 
-      const componentContainer = document.createElement('div');
-      componentContainer.id = '#component';
-      this.shadowRoot!.appendChild(componentContainer);
-      render(Page(properties), componentContainer);
+      fragment.appendChild(this.styleContainer);
+      fragment.appendChild(this.componentContainer);
+
+      render(Page(typedProperties), this.componentContainer);
+      this.shadowRoot!.append(fragment);
+    }
+
+    _update() {
+      render(
+        Page(typedProperties),
+        this.shadowRoot!.getElementById('#component')!,
+      );
     }
   }
 
-  if (customElements.get(name) === undefined) {
-    customElements.define(name, RouteElement);
+  if (customElements.get(tagName) === undefined) {
+    customElements.define(tagName, RouteElement);
   }
 
-  return () => document.createElement(name);
+  return () => document.createElement(tagName);
 }

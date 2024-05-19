@@ -10,7 +10,6 @@ export const styles = css`
   }
 `;
 
-export const name = 'page-home';
 export const Page = ({ title = 'Project Template 2024' }) => {
   const webComponentsMDN =
     'https://developer.mozilla.org/en-US/docs/Web/API/Web_components';

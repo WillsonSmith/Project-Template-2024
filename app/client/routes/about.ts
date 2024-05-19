@@ -1,6 +1,5 @@
 import { html } from 'lit';
 
-export const name = 'page-about';
 export const Page = () => html`
   <main style="padding: var(--space-md)">
     <h1>About</h1>

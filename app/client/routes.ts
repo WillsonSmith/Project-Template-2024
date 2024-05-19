@@ -8,16 +8,16 @@ export const routes = [
   {
     name: 'Home',
     path: '/',
-    render: createComponent(home.name, home),
+    render: createComponent(home),
   },
   {
     name: 'About',
     path: '/about',
-    render: createComponent(about.name, about),
+    render: createComponent(about),
   },
   {
     name: 'Cats',
     path: '/cats',
-    render: createComponent(cats.name, cats),
+    render: createComponent({ ...cats, title: 'Cat gallery' }),
   },
 ];
