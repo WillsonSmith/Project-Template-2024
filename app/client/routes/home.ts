@@ -1,4 +1,7 @@
 import { css, html } from 'lit';
+import { styleMap } from 'lit/directives/style-map.js';
+
+import { props } from '@/styles/properties';
 
 export const styles = css`
   :host {
@@ -10,18 +13,25 @@ export const styles = css`
   }
 `;
 
-export const Page = ({ title = 'Project Template 2024' }) => {
+export const Page = ({ title }: { title: string }) => {
   const webComponentsMDN =
     'https://developer.mozilla.org/en-US/docs/Web/API/Web_components';
 
-  console.warn(`TODO:
-  - generate css template literals
-  - import required for page
-  - assign to components with a style tag`);
+  const colorOptions: (keyof typeof props.color)[] = [
+    'red',
+    'orange',
+    'yellow',
+    'green',
+  ];
+
+  const selected =
+    colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
   return html`
-    <main>
-      <h1>${title}</h1>
+    <main style="padding: ${props.space.md}">
+      <h1 style=${styleMap({ color: props.color[selected]['700'] })}>
+        ${title}
+      </h1>
       <p>
         A basic template for building front-end web applications with
         <a href=${webComponentsMDN}>Web Components</a>.
