@@ -28,7 +28,7 @@ export const Page = ({ title }: { title: string }) => {
     colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
   return html`
-    <main>
+    <main style="padding: ${props.space.md}">
       <h1 style=${styleMap({ color: props.color[selected]['700'] })}>
         ${title}
       </h1>
