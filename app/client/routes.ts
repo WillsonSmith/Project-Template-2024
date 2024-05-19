@@ -1,18 +1,38 @@
-import { html } from 'lit';
+import { html, render } from 'lit';
+
+import * as home from './routes/home';
+
+console.log(home);
+
+function registerComponent(name, { Page, styles, ...properties }) {
+  class RouteElement extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+      const styleTag = document.createElement('style');
+      render(styles, styleTag);
+      this.shadowRoot!.appendChild(styleTag);
+
+      const componentContainer = document.createElement('div');
+      componentContainer.id = '#app';
+      this.shadowRoot!.appendChild(componentContainer);
+      render(Page(properties), componentContainer);
+    }
+  }
+  customElements.define(name, RouteElement);
+  return document.createElement(name);
+}
 
 export const routes = [
   {
     name: 'Home',
     path: '/',
-    render: () => html`
-      <main style="padding: var(--space-md)">
-        <h1>Project Template 2024</h1>
-        <p>
-          A basic template for building front-end web applications. See
-          <a href="/about">about</a> for more details.
-        </p>
-      </main>
-    `,
+    render: () => {
+      return registerComponent(home.componentName, home);
+    },
   },
   {
     name: 'About',
