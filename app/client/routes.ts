@@ -1,6 +1,4 @@
-import { html } from 'lit';
-
-import { registerComponent } from '../renderer/route-renderer';
+import { createComponent } from '../renderer/createComponent';
 
 import * as about from './routes/about';
 import * as cats from './routes/cats';
@@ -10,21 +8,16 @@ export const routes = [
   {
     name: 'Home',
     path: '/',
-    render: registerComponent(home.componentName, home),
+    render: createComponent(home),
   },
   {
     name: 'About',
     path: '/about',
-    render: about.Page,
+    render: createComponent(about),
   },
   {
     name: 'Cats',
     path: '/cats',
-    render: () => html`
-      <style>
-        ${cats.styles}
-      </style>
-      ${cats.Page()}
-    `,
+    render: createComponent({ ...cats, title: 'Cat gallery' }),
   },
 ];
