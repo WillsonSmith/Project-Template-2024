@@ -4,7 +4,7 @@ import { html, render } from 'lit';
 
 import '@webcomponents/scoped-custom-element-registry';
 
-import '@/app-entry';
+import '@/app/app-entry';
 
 // @ts-expect-error: Property 'UrlPattern' does not exist
 if (!globalThis.URLPattern) {

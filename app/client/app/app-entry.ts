@@ -3,8 +3,9 @@ import { customElement } from 'lit/decorators.js';
 
 import { Router } from '@lit-labs/router';
 
-import { reset } from './styles/reset.styles';
-import '@/app-frame';
+import { reset } from '@/styles/reset.styles';
+
+import '@/app/app-frame';
 import { routes } from '@/routes';
 
 @customElement('app-entry')
