@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { appendFile, mkdir, readFile, readdir, writeFile } from 'fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'fs/promises';
 import path from 'path';
 
 interface Token {
@@ -72,17 +72,13 @@ async function saveFile(filePath: string, content: string): Promise<void> {
   await writeFile(filePath, content, 'utf-8');
 }
 
-async function appendToFile(filePath: string, content: string): Promise<void> {
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await appendFile(filePath, content, 'utf-8');
-}
-
 async function generateFiles(
   tokensDir: string,
   outputDir: string,
 ): Promise<void> {
   const files = await readTokensDir(tokensDir);
-  const colorFiles: string[] = [];
+  const directoryIndexMap: { [key: string]: string[] } = {};
+  const topLevelFiles: string[] = [];
 
   for (const file of files) {
     const token = await readJSONFile(file);
@@ -104,22 +100,38 @@ async function generateFiles(
 
     await saveFile(filePath, content);
 
-    // Update main index file
-    const mainIndexPath = `${outputDir}/${directoryName}/index.ts`;
-    const importPath = `./${camelCaseKey}`;
-    const exportContent = `export { ${camelCaseKey}, ${camelCaseKey}Raw } from '${importPath}';\n`;
-    await appendToFile(mainIndexPath, exportContent);
-
-    // Track color files for the additional export
-    if (directoryName === 'color') {
-      colorFiles.push(importPath);
+    if (directoryName === '.') {
+      topLevelFiles.push(camelCaseKey);
+    } else {
+      if (!directoryIndexMap[directoryName]) {
+        directoryIndexMap[directoryName] = [];
+      }
+      directoryIndexMap[directoryName].push(camelCaseKey);
     }
   }
 
-  // Add the additional export to props/index.ts for the color directory
+  for (const [directoryName, keys] of Object.entries(directoryIndexMap)) {
+    const indexPath = `${outputDir}/${directoryName}/index.ts`;
+    const exportContent = keys
+      .map((key) => `export { ${key}, ${key}Raw } from './${key}';\n`)
+      .join('');
+    await saveFile(indexPath, exportContent);
+  }
+
   const mainIndexPath = `${outputDir}/index.ts`;
-  const exportColorContent = `export * as color from './color';\n`;
-  await appendToFile(mainIndexPath, exportColorContent);
+  const exportTopLevelFilesContent = topLevelFiles
+    .map((key) => `export { ${key}, ${key}Raw } from './${key}';\n`)
+    .join('');
+  const exportDirectoriesContent = Object.keys(directoryIndexMap)
+    .map(
+      (directoryName) =>
+        `export * as ${path.basename(directoryName)} from './${directoryName}';\n`,
+    )
+    .join('');
+  await saveFile(
+    mainIndexPath,
+    exportTopLevelFilesContent + exportDirectoriesContent,
+  );
 }
 
 function generateCssObjectString(cssValues: any): string {
