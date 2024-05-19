@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const letterSpacingValues = {
+export const letterSpacingRaw = {
   tighter: '-0.03em',
   tight: '-0.015em',
   normal: 'normal',

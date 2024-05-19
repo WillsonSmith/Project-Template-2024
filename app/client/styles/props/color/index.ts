@@ -1,8 +1,8 @@
-export { red, redValues } from './red';
-export { orange, orangeValues } from './orange';
-export { green, greenValues } from './green';
-export { blue, blueValues } from './blue';
-export { yellow, yellowValues } from './yellow';
-export { indigo, indigoValues } from './indigo';
-export { neutral, neutralValues } from './neutral';
-export { violet, violetValues } from './violet';
+export { red, redRaw } from './red';
+export { orange, orangeRaw } from './orange';
+export { green, greenRaw } from './green';
+export { blue, blueRaw } from './blue';
+export { yellow, yellowRaw } from './yellow';
+export { indigo, indigoRaw } from './indigo';
+export { neutral, neutralRaw } from './neutral';
+export { violet, violetRaw } from './violet';

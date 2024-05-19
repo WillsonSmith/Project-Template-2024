@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const redValues = {
+export const redRaw = {
   '50': '#fef2f2',
   '100': '#fee2e2',
   '200': '#fecaca',
@@ -15,15 +15,15 @@ export const redValues = {
 };
 
 export const red = {
-  '50': css`var(--color-red-50)`,
-  '100': css`var(--color-red-100)`,
-  '200': css`var(--color-red-200)`,
-  '300': css`var(--color-red-300)`,
-  '400': css`var(--color-red-400)`,
-  '500': css`var(--color-red-500)`,
-  '600': css`var(--color-red-600)`,
-  '700': css`var(--color-red-700)`,
-  '800': css`var(--color-red-800)`,
-  '900': css`var(--color-red-900)`,
-  '950': css`var(--color-red-950)`,
+  '50': css`var(--red-50)`,
+  '100': css`var(--red-100)`,
+  '200': css`var(--red-200)`,
+  '300': css`var(--red-300)`,
+  '400': css`var(--red-400)`,
+  '500': css`var(--red-500)`,
+  '600': css`var(--red-600)`,
+  '700': css`var(--red-700)`,
+  '800': css`var(--red-800)`,
+  '900': css`var(--red-900)`,
+  '950': css`var(--red-950)`,
 };

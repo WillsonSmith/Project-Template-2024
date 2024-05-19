@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const radiusValues = {
+export const radiusRaw = {
   md: '0.25rem',
   lg: '0.5rem',
   xl: '1rem',

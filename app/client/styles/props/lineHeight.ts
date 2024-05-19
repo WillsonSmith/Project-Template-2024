@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const lineHeightValues = {
+export const lineHeightRaw = {
   tighter: 1,
   tight: 1.4,
   normal: 1.8,

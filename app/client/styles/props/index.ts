@@ -1,6 +1,6 @@
+export { space, spaceRaw } from './space';
+export { letterSpacing, letterSpacingRaw } from './letterSpacing';
+export { radius, radiusRaw } from './radius';
+export { font, fontRaw } from './font';
+export { lineHeight, lineHeightRaw } from './lineHeight';
 export * as color from './color';
-export { space, spaceValues } from './space';
-export { letterSpacing, letterSpacingValues } from './letterSpacing';
-export { radius, radiusValues } from './radius';
-export { font, fontValues } from './font';
-export { lineHeight, lineHeightValues } from './lineHeight';

@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const greenValues = {
+export const greenRaw = {
   '50': '#f0fdf4',
   '100': '#dcfce7',
   '200': '#bbf7d0',
@@ -15,15 +15,15 @@ export const greenValues = {
 };
 
 export const green = {
-  '50': css`var(--color-green-50)`,
-  '100': css`var(--color-green-100)`,
-  '200': css`var(--color-green-200)`,
-  '300': css`var(--color-green-300)`,
-  '400': css`var(--color-green-400)`,
-  '500': css`var(--color-green-500)`,
-  '600': css`var(--color-green-600)`,
-  '700': css`var(--color-green-700)`,
-  '800': css`var(--color-green-800)`,
-  '900': css`var(--color-green-900)`,
-  '950': css`var(--color-green-950)`,
+  '50': css`var(--green-50)`,
+  '100': css`var(--green-100)`,
+  '200': css`var(--green-200)`,
+  '300': css`var(--green-300)`,
+  '400': css`var(--green-400)`,
+  '500': css`var(--green-500)`,
+  '600': css`var(--green-600)`,
+  '700': css`var(--green-700)`,
+  '800': css`var(--green-800)`,
+  '900': css`var(--green-900)`,
+  '950': css`var(--green-950)`,
 };

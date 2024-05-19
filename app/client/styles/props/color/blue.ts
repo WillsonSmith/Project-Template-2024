@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const blueValues = {
+export const blueRaw = {
   '50': '#eff6ff',
   '100': '#dbeafe',
   '200': '#bfdbfe',
@@ -15,15 +15,15 @@ export const blueValues = {
 };
 
 export const blue = {
-  '50': css`var(--color-blue-50)`,
-  '100': css`var(--color-blue-100)`,
-  '200': css`var(--color-blue-200)`,
-  '300': css`var(--color-blue-300)`,
-  '400': css`var(--color-blue-400)`,
-  '500': css`var(--color-blue-500)`,
-  '600': css`var(--color-blue-600)`,
-  '700': css`var(--color-blue-700)`,
-  '800': css`var(--color-blue-800)`,
-  '900': css`var(--color-blue-900)`,
-  '950': css`var(--color-blue-950)`,
+  '50': css`var(--blue-50)`,
+  '100': css`var(--blue-100)`,
+  '200': css`var(--blue-200)`,
+  '300': css`var(--blue-300)`,
+  '400': css`var(--blue-400)`,
+  '500': css`var(--blue-500)`,
+  '600': css`var(--blue-600)`,
+  '700': css`var(--blue-700)`,
+  '800': css`var(--blue-800)`,
+  '900': css`var(--blue-900)`,
+  '950': css`var(--blue-950)`,
 };

@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const violetValues = {
+export const violetRaw = {
   '50': '#f5f3ff',
   '100': '#ede9fe',
   '200': '#ddd6fe',
@@ -15,15 +15,15 @@ export const violetValues = {
 };
 
 export const violet = {
-  '50': css`var(--color-violet-50)`,
-  '100': css`var(--color-violet-100)`,
-  '200': css`var(--color-violet-200)`,
-  '300': css`var(--color-violet-300)`,
-  '400': css`var(--color-violet-400)`,
-  '500': css`var(--color-violet-500)`,
-  '600': css`var(--color-violet-600)`,
-  '700': css`var(--color-violet-700)`,
-  '800': css`var(--color-violet-800)`,
-  '900': css`var(--color-violet-900)`,
-  '950': css`var(--color-violet-950)`,
+  '50': css`var(--violet-50)`,
+  '100': css`var(--violet-100)`,
+  '200': css`var(--violet-200)`,
+  '300': css`var(--violet-300)`,
+  '400': css`var(--violet-400)`,
+  '500': css`var(--violet-500)`,
+  '600': css`var(--violet-600)`,
+  '700': css`var(--violet-700)`,
+  '800': css`var(--violet-800)`,
+  '900': css`var(--violet-900)`,
+  '950': css`var(--violet-950)`,
 };
