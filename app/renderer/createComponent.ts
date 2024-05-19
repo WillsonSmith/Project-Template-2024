@@ -1,12 +1,10 @@
 import { type CSSResult, type TemplateResult, render } from 'lit';
 
-export type ComponentProps<T> = {
+export type ComponentProps<T extends { [key: string]: unknown }> = {
   Page: (properties: T) => TemplateResult;
   styles?: CSSResult;
   tagName?: string;
-} & {
-  [key: string]: unknown;
-};
+} & T;
 
 const uniqueId = (() => {
   let iterator = 0;
@@ -21,7 +19,7 @@ export function createComponent<T extends { [key: string]: unknown }>({
   tagName,
   ...properties
 }: ComponentProps<T>) {
-  const typedProperties = properties as T;
+  const typedProperties = properties as unknown as T;
   tagName = tagName || uniqueId(`app-custom-tag`);
 
   class RouteElement extends HTMLElement {

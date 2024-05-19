@@ -18,6 +18,6 @@ export const routes = [
   {
     name: 'Cats',
     path: '/cats',
-    render: createComponent({ ...cats, title: 'Cat gallery' }),
+    render: createComponent<cats.PageProps>({ ...cats, title: 'Cat gallery' }),
   },
 ];
