@@ -6,7 +6,7 @@ export const styles = css`
   }
 
   main {
-    padding-inline: var(--spacing-md);
+    padding-inline: var(--space-md);
   }
 `;
 

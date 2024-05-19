@@ -5,8 +5,8 @@ import { Task } from '@lit/task';
 
 import { reset } from '@/styles/reset.styles';
 
-@customElement('route-cats')
-export class RouteCats extends LitElement {
+@customElement('cat-gallery')
+export class CatGallery extends LitElement {
   @property({ type: Number }) count = 1;
 
   private cats = new Task(this, {
@@ -23,7 +23,7 @@ export class RouteCats extends LitElement {
 
   render() {
     return html`
-      <main class="route-cats">
+      <div class="route-cats">
         <ul class="cat-list">
           ${this.cats.render({
             complete: (
@@ -50,7 +50,7 @@ export class RouteCats extends LitElement {
             },
           })}
         </ul>
-      </main>
+      </div>
     `;
   }
 
