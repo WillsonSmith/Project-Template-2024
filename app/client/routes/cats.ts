@@ -1,7 +1,5 @@
 import { css, html } from 'lit';
-import { styleMap } from 'lit/directives/style-map.js';
 
-import { props } from '@/styles/properties';
 import { reset } from '@/styles/reset.styles';
 
 export const styles = css`
@@ -35,23 +33,8 @@ export type PageProps = {
 
 export const Page = ({ title = 'Cats!' }: PageProps) => {
   import('./cats/cat-gallery');
-
-  const colorOptions: (keyof typeof props.color)[] = [
-    'red',
-    'orange',
-    'yellow',
-    'green',
-  ];
-
-  const selected =
-    colorOptions[Math.floor(Math.random() * colorOptions.length)];
-
   return html`
-    <main
-      style=${styleMap({
-        color: props.color[selected]['700'],
-      })}
-    >
+    <main>
       <div class="page">
         <h1>${title}</h1>
         <cat-gallery count=${12}></cat-gallery>
