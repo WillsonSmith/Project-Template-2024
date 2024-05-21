@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-export const Page = () => html`
+export const About = () => html`
   <main style="padding: var(--space-md)">
     <h1 style="line-height: var(--line-height-tighter)">About</h1>
     <p>
@@ -9,3 +9,5 @@ export const Page = () => html`
     </p>
   </main>
 `;
+
+export default About;

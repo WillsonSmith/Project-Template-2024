@@ -3,7 +3,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 import { color, space } from '@/styles/props';
 
-export const Page = ({ title }: { title: string }) => {
+export const Home = ({ title }: { title: string }) => {
   const webComponentsMDN =
     'https://developer.mozilla.org/en-US/docs/Web/API/Web_components';
 
@@ -29,3 +29,5 @@ export const Page = ({ title }: { title: string }) => {
     </main>
   `;
 };
+
+export default Home;
