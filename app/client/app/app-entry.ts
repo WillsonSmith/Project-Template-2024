@@ -6,11 +6,16 @@ import { Router } from '@lit-labs/router';
 import { reset } from '@/styles/reset.styles';
 
 import '@/app/app-frame';
-import { routes } from '@/routes';
+import { routes } from '@/router/routes';
 
 @customElement('app-entry')
 export class AppEntry extends LitElement {
-  private router = new Router(this, routes);
+  private router = new Router(this, []);
+
+  constructor() {
+    super();
+    this.router.routes = [...routes(this.router)];
+  }
 
   static styles = [
     reset,

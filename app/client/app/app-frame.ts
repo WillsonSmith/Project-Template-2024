@@ -6,7 +6,20 @@ import { reset } from '@/styles/reset.styles';
 
 import '@/components/nav-button';
 
-import { routes } from '@/routes';
+const navItems = [
+  {
+    path: '/',
+    name: 'Home',
+  },
+  {
+    path: '/about',
+    name: 'About',
+  },
+  {
+    path: '/cats',
+    name: 'Cats',
+  },
+];
 
 @customElement('app-frame')
 export class AppFrame extends LitElement {
@@ -36,7 +49,7 @@ export class AppFrame extends LitElement {
           <nav>
             <div class="nav-content">
               ${map(
-                routes,
+                navItems,
                 (route) =>
                   html`<nav-button href=${route.path}
                     >${route.name}</nav-button
