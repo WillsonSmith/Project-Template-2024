@@ -12,7 +12,7 @@ app.route('/api', api);
 const production = process.env.NODE_ENV === 'production';
 
 if (production) {
-  app.get('/styles/*', serveStatic({ root: `./app/client/dist` }));
+  app.use('/styles/*', serveStatic({ root: `./app/client/dist` }));
   app.use('/assets/*', serveStatic({ root: `./app/client/dist` }));
 }
 
