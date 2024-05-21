@@ -28,6 +28,7 @@ export const styles = css`
 `;
 
 export const tagName = 'page-cats';
+
 export type PageProps = {
   title: string;
 };
