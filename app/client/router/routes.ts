@@ -1,8 +1,8 @@
 import { Router } from '@lit-labs/router';
 
-import { route } from './router/createRoute';
-import * as about from './routes/about';
-import * as home from './routes/home';
+import { route } from '@/router/createRoute';
+import * as about from '@/routes/about';
+import * as home from '@/routes/home';
 
 export const routes = (router: Router) => [
   route('/', home.Page, { title: 'Project Template 2024' }),
