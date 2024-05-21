@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     manifest: true,
     rollupOptions: {
-      input: production ? 'app/client/index.html' : 'app/client/app.ts',
+      input: production ? 'app/client/app.ts' : 'app/client/index.html',
     },
   },
   resolve: {
