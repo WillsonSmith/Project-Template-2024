@@ -1,3 +1,10 @@
+/**
+ * Disclaimer:
+ * This was generated with ChatGPT 4o,
+ * There was no way I'd my time building this when I want to build apps.
+ * I'll be rebuilding this in future.
+ */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { appendFile, mkdir, readFile, readdir, writeFile } from 'fs/promises';
 import path from 'path';
