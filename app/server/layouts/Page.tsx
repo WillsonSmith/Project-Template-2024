@@ -9,7 +9,7 @@ function loadManifest(path: string) {
 
 const production = process.env.NODE_ENV === 'production';
 
-export const Layout: FC = async ({ title, children }) => {
+export const Page: FC = async ({ title, children }) => {
   return (
     <html lang="en">
       <head>
