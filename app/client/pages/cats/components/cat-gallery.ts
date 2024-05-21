@@ -1,12 +1,14 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { Task } from '@lit/task';
 
-import { reset } from '@/styles/reset.styles';
+import { styles } from './cat-gallery.styles';
 
 @customElement('cat-gallery')
 export class CatGallery extends LitElement {
+  static styles = styles;
+
   @property({ type: Number }) count = 1;
 
   private cats = new Task(this, {
@@ -58,64 +60,4 @@ export class CatGallery extends LitElement {
     const target = event.target as HTMLImageElement;
     target.classList.add('loaded');
   }
-
-  static styles = css`
-    ${reset}
-
-    :host {
-      display: block;
-      padding: var(--space-md);
-    }
-
-    .route-cats {
-      display: flex;
-      justify-content: center;
-    }
-
-    .cat-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--space-sm);
-
-      min-inline-size: 0;
-      max-inline-size: 80ch;
-    }
-
-    @keyframes enter {
-      0% {
-        opacity: 0;
-        translate: 0px -8px;
-      }
-
-      50% {
-        opacity: 60%;
-        translate: 0px 0px;
-      }
-
-      100% {
-        opacity: 1;
-        translate: 0px 0px;
-      }
-    }
-
-    li {
-      display: flex;
-      background-color: var(--color-neutral-200);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-
-      animation: 1s linear enter;
-    }
-
-    img {
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 250ms ease-in;
-
-      &.loaded {
-        opacity: 1;
-      }
-    }
-  `;
 }

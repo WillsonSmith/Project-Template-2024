@@ -33,8 +33,8 @@ export type PageProps = {
   title: string;
 };
 
-export const Page = ({ title = 'Cats!' }: PageProps) => {
-  import('./cats/cat-gallery');
+export const Cats = ({ title = 'Cats!' }: PageProps) => {
+  import('./cats/components/cat-gallery');
   return html`
     <main>
       <div class="page">
@@ -44,3 +44,4 @@ export const Page = ({ title = 'Cats!' }: PageProps) => {
     </main>
   `;
 };
+export default Cats;

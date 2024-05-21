@@ -1,23 +1,13 @@
-import { css, html } from 'lit';
+import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { props } from '@/styles/properties';
+import { color, space } from '@/styles/props';
 
-export const styles = css`
-  :host {
-    display: block;
-  }
-
-  main {
-    padding-inline: var(--space-md);
-  }
-`;
-
-export const Page = ({ title }: { title: string }) => {
+export const Home = ({ title }: { title: string }) => {
   const webComponentsMDN =
     'https://developer.mozilla.org/en-US/docs/Web/API/Web_components';
 
-  const colorOptions: (keyof typeof props.color)[] = [
+  const colorOptions: (keyof Omit<typeof color, `${string}Raw`>)[] = [
     'red',
     'orange',
     'yellow',
@@ -28,8 +18,8 @@ export const Page = ({ title }: { title: string }) => {
     colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
   return html`
-    <main style="padding: ${props.space.md}">
-      <h1 style=${styleMap({ color: props.color[selected]['700'] })}>
+    <main style="padding: ${space.md}">
+      <h1 style=${styleMap({ color: color[selected]['700'].cssText })}>
         ${title}
       </h1>
       <p>
@@ -39,3 +29,5 @@ export const Page = ({ title }: { title: string }) => {
     </main>
   `;
 };
+
+export default Home;
