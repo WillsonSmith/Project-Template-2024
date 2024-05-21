@@ -15,15 +15,15 @@ export const indigoRaw = {
 };
 
 export const indigo = {
-  '50': css`var(--indigo-50)`,
-  '100': css`var(--indigo-100)`,
-  '200': css`var(--indigo-200)`,
-  '300': css`var(--indigo-300)`,
-  '400': css`var(--indigo-400)`,
-  '500': css`var(--indigo-500)`,
-  '600': css`var(--indigo-600)`,
-  '700': css`var(--indigo-700)`,
-  '800': css`var(--indigo-800)`,
-  '900': css`var(--indigo-900)`,
-  '950': css`var(--indigo-950)`,
+  '50': css`var(--color-indigo-50)`,
+  '100': css`var(--color-indigo-100)`,
+  '200': css`var(--color-indigo-200)`,
+  '300': css`var(--color-indigo-300)`,
+  '400': css`var(--color-indigo-400)`,
+  '500': css`var(--color-indigo-500)`,
+  '600': css`var(--color-indigo-600)`,
+  '700': css`var(--color-indigo-700)`,
+  '800': css`var(--color-indigo-800)`,
+  '900': css`var(--color-indigo-900)`,
+  '950': css`var(--color-indigo-950)`,
 };

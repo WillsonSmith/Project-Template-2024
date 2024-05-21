@@ -15,15 +15,15 @@ export const yellowRaw = {
 };
 
 export const yellow = {
-  '50': css`var(--yellow-50)`,
-  '100': css`var(--yellow-100)`,
-  '200': css`var(--yellow-200)`,
-  '300': css`var(--yellow-300)`,
-  '400': css`var(--yellow-400)`,
-  '500': css`var(--yellow-500)`,
-  '600': css`var(--yellow-600)`,
-  '700': css`var(--yellow-700)`,
-  '800': css`var(--yellow-800)`,
-  '900': css`var(--yellow-900)`,
-  '950': css`var(--yellow-950)`,
+  '50': css`var(--color-yellow-50)`,
+  '100': css`var(--color-yellow-100)`,
+  '200': css`var(--color-yellow-200)`,
+  '300': css`var(--color-yellow-300)`,
+  '400': css`var(--color-yellow-400)`,
+  '500': css`var(--color-yellow-500)`,
+  '600': css`var(--color-yellow-600)`,
+  '700': css`var(--color-yellow-700)`,
+  '800': css`var(--color-yellow-800)`,
+  '900': css`var(--color-yellow-900)`,
+  '950': css`var(--color-yellow-950)`,
 };

@@ -15,15 +15,15 @@ export const orangeRaw = {
 };
 
 export const orange = {
-  '50': css`var(--orange-50)`,
-  '100': css`var(--orange-100)`,
-  '200': css`var(--orange-200)`,
-  '300': css`var(--orange-300)`,
-  '400': css`var(--orange-400)`,
-  '500': css`var(--orange-500)`,
-  '600': css`var(--orange-600)`,
-  '700': css`var(--orange-700)`,
-  '800': css`var(--orange-800)`,
-  '900': css`var(--orange-900)`,
-  '950': css`var(--orange-950)`,
+  '50': css`var(--color-orange-50)`,
+  '100': css`var(--color-orange-100)`,
+  '200': css`var(--color-orange-200)`,
+  '300': css`var(--color-orange-300)`,
+  '400': css`var(--color-orange-400)`,
+  '500': css`var(--color-orange-500)`,
+  '600': css`var(--color-orange-600)`,
+  '700': css`var(--color-orange-700)`,
+  '800': css`var(--color-orange-800)`,
+  '900': css`var(--color-orange-900)`,
+  '950': css`var(--color-orange-950)`,
 };
