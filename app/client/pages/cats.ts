@@ -31,15 +31,16 @@ export const tagName = 'page-cats';
 
 export type PageProps = {
   title: string;
+  count?: number;
 };
 
-export const Page = ({ title = 'Cats!' }: PageProps) => {
+export const Page = ({ title = 'Cats!', count }: PageProps) => {
   import('./cats/cat-gallery');
   return html`
     <main>
       <div class="page">
         <h1>${title}</h1>
-        <cat-gallery count=${12}></cat-gallery>
+        <cat-gallery count=${count || 12}></cat-gallery>
       </div>
     </main>
   `;
