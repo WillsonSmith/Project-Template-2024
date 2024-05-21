@@ -3,8 +3,8 @@ import { when } from 'lit/directives/when.js';
 import { Hono } from 'hono';
 import { serveStatic } from 'hono/bun';
 
-import { Layout } from './Layout';
 import api from './api';
+import { Page } from './layouts/Page';
 
 const app = new Hono();
 app.route('/api', api);
@@ -12,7 +12,7 @@ app.route('/api', api);
 const production = process.env.NODE_ENV === 'production';
 
 if (production) {
-  app.get('/styles/*', serveStatic({ root: `./app/client/dist` }));
+  app.use('/styles/*', serveStatic({ root: `./app/client/dist` }));
   app.use('/assets/*', serveStatic({ root: `./app/client/dist` }));
 }
 
@@ -28,7 +28,7 @@ app.get('/*', async (c) => {
   }
 
   return c.html(
-    <Layout title="Project Template 2024">
+    <Page title="Project Template 2024">
       <div id="app"></div>
 
       {when(!production, () => (
@@ -37,7 +37,7 @@ app.get('/*', async (c) => {
           <script type="module" src={`${viteUrl}/app.ts`}></script>
         </>
       ))}
-    </Layout>,
+    </Page>,
   );
 });
 
