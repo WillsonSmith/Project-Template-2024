@@ -1,23 +1,35 @@
-import { createComponent } from '../renderer/createComponent';
+import { Router } from '@lit-labs/router';
 
+import { route } from './router/createRoute';
 import * as about from './routes/about';
-import * as cats from './routes/cats';
 import * as home from './routes/home';
 
-export const routes = [
+export const routes = (router: Router) => [
+  route('/', home.Page, { title: 'Project Template 2024' }),
+  route('/about', about.Page),
   {
-    name: 'Home',
-    path: '/',
-    render: () => home.Page({ title: 'Project Template 2024' }),
-  },
-  {
-    name: 'About',
-    path: '/about',
-    render: about.Page,
-  },
-  {
-    name: 'Cats',
-    path: '/cats',
-    render: createComponent({ ...cats, title: 'Cat gallery' }),
+    path: '/*',
+    enter: async (params: { [key: string]: string | undefined }) => {
+      const path = params[0];
+      if (path === 'cats') {
+        const cats = await import('@/routes/cats');
+        const { routes } = router;
+        routes.splice(
+          routes.length - 1,
+          0,
+          route('/cats', cats.Page, {
+            title: 'Cat gallery',
+            options: {
+              scoped: true,
+              tagName: 'route-cat-gallery',
+              styles: cats.styles,
+            },
+          }),
+        );
+        await router.goto('/' + path);
+        return false;
+      }
+      return true;
+    },
   },
 ];

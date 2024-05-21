@@ -1,5 +1,7 @@
 import { type CSSResult, type TemplateResult, render } from 'lit';
 
+import { RouteConfig } from '@lit-labs/router';
+
 import { autoBind } from '@/util/autobind';
 
 type Options =
@@ -81,11 +83,11 @@ export function route<T extends Record<string, unknown>>(
       }
       return el;
     };
-    return routeOptions;
+    return routeOptions as RouteConfig;
   }
 
   return {
     path,
     render: (properties: T) => renderFn({ ...typedProps, ...properties }),
-  };
+  } as RouteConfig;
 }

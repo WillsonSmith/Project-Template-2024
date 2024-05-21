@@ -10,7 +10,12 @@ import { routes } from '@/routes';
 
 @customElement('app-entry')
 export class AppEntry extends LitElement {
-  private router = new Router(this, routes);
+  private router = new Router(this, []);
+
+  constructor() {
+    super();
+    this.router.routes = [...routes(this.router)];
+  }
 
   static styles = [
     reset,
