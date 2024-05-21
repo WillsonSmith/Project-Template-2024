@@ -1,5 +1,7 @@
 import { type CSSResult, type TemplateResult, render } from 'lit';
 
+import { autoBind } from '@/util/autobind';
+
 export type ComponentProps<T extends { [key: string]: unknown }> = {
   Page: (properties: T) => TemplateResult;
   styles?: CSSResult;
@@ -21,6 +23,8 @@ export function createComponent<T extends { [key: string]: unknown }>({
 
       constructor() {
         super();
+        autoBind(this);
+
         this.attachShadow({ mode: 'open' });
       }
 
