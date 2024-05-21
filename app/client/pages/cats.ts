@@ -34,7 +34,7 @@ export type PageProps = {
 };
 
 export const Page = ({ title = 'Cats!' }: PageProps) => {
-  import('./cats/cat-gallery');
+  import('./cats/components/cat-gallery');
   return html`
     <main>
       <div class="page">
