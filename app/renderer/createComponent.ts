@@ -37,10 +37,7 @@ export function createComponent<T extends { [key: string]: unknown }>({
       }
 
       _update() {
-        render(
-          Page(typedProperties),
-          this.shadowRoot!.getElementById('#component')!,
-        );
+        render(Page(typedProperties), this.shadowRoot);
       }
     }
 
