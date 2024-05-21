@@ -39,7 +39,7 @@ export const Page = ({ title = 'Cats!' }: PageProps) => {
     <main>
       <div class="page">
         <h1>${title}</h1>
-        <cat-gallery count=${12}></cat-gallery>
+        <cat-gallery count="12"></cat-gallery>
       </div>
     </main>
   `;

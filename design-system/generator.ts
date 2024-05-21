@@ -1,5 +1,12 @@
+/**
+ * Disclaimer:
+ * This was generated with ChatGPT 4o,
+ * There was no way I'd my time building this when I want to build apps.
+ * I'll be rebuilding this in future.
+ */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { mkdir, readFile, readdir, writeFile } from 'fs/promises';
+import { appendFile, mkdir, readFile, readdir, writeFile } from 'fs/promises';
 import path from 'path';
 
 interface Token {
@@ -25,8 +32,13 @@ async function readTokensDir(dir: string): Promise<string[]> {
   return Array.prototype.concat(...files);
 }
 
-function transformValuesToCSSVars(parentKey: string, obj: any): any {
+function transformValuesToCSSVars(
+  parentKey: string,
+  directoryName: string,
+  obj: any,
+): any {
   const result: any = {};
+  const prefix = directoryName === '.' ? '' : `${directoryName}-`;
   for (const key in obj) {
     if (obj[key]) {
       const value = obj[key];
@@ -35,9 +47,13 @@ function transformValuesToCSSVars(parentKey: string, obj: any): any {
         !Array.isArray(value) &&
         !('$value' in value)
       ) {
-        result[key] = transformValuesToCSSVars(`${parentKey}-${key}`, value);
+        result[key] = transformValuesToCSSVars(
+          `${parentKey}-${key}`,
+          directoryName,
+          value,
+        );
       } else {
-        result[key] = `var(--${parentKey}-${key})`;
+        result[key] = `var(--${prefix}${parentKey}-${key})`;
       }
     }
   }
@@ -72,6 +88,12 @@ async function saveFile(filePath: string, content: string): Promise<void> {
   await writeFile(filePath, content, 'utf-8');
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function appendToFile(filePath: string, content: string): Promise<void> {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await appendFile(filePath, content, 'utf-8');
+}
+
 async function generateFiles(
   tokensDir: string,
   outputDir: string,
@@ -87,7 +109,11 @@ async function generateFiles(
     const directoryName = path.dirname(relativePath);
 
     const rawValues = transformRawValues(token);
-    const cssValues = transformValuesToCSSVars(propertyName, token);
+    const cssValues = transformValuesToCSSVars(
+      propertyName,
+      directoryName,
+      token,
+    );
 
     const camelCaseKey = toCamelCase(propertyName);
     const filePath = `${outputDir}/${directoryName}/${camelCaseKey}.ts`;
@@ -96,6 +122,9 @@ async function generateFiles(
       rawValues,
       null,
       2,
+    ).replace(
+      /"/g,
+      "'",
     )};\n\nexport const ${camelCaseKey} = {\n${generateCssObjectString(cssValues)}\n};\n`;
 
     await saveFile(filePath, content);
@@ -138,9 +167,9 @@ function generateCssObjectString(cssValues: any): string {
   const entries = Object.entries(cssValues)
     .map(([key, value]) => {
       if (typeof value === 'object' && !Array.isArray(value)) {
-        return `  "${key}": {\n${generateCssObjectString(value)}\n  }`;
+        return `  '${key}': {\n${generateCssObjectString(value)}\n  }`;
       }
-      return `  "${key}": css\`${value}\``;
+      return `  '${key}': css\`${value}\``;
     })
     .join(',\n');
   return entries;
