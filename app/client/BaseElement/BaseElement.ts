@@ -1,14 +1,23 @@
-import { CSSResult, TemplateResult, html, render } from 'lit';
+import { CSSResult, html, render } from 'lit';
 
 import { PropertyMap } from './state/PropertyMap';
+import { autoBind } from './util/autobind';
 
-export abstract class BaseElement extends HTMLElement {
+export abstract class HachiElement extends HTMLElement {
   properties: PropertyMap;
   constructor() {
     super();
     autoBind(this);
-    this.attachShadow({ mode: 'open' });
+    const shadow = this.attachShadow({ mode: 'open' });
+    this._stylesheet = new CSSStyleSheet();
+    shadow.adoptedStyleSheets = [this._stylesheet];
     this.properties = new PropertyMap(this);
+  }
+
+  styles(styles: CSSResult) {
+    // should probably have a glbal cache?
+    this._stylesheet.replaceSync(styles.cssText);
+    this.shadowRoot.adoptedStyleSheets = [this._stylesheet];
   }
 
   render() {
@@ -19,83 +28,11 @@ export abstract class BaseElement extends HTMLElement {
     render(this.render(), this.shadowRoot!);
   }
 
-  attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
+  attributeChangedCallback(...attrs: [string, string, string]) {
+    const [, name, newValue] = attrs;
     this.properties.set(name, newValue);
   }
 
   static styles?: CSSResult;
   static observedAttributes: string[] = [];
-}
-
-// Functional
-export function createElement(
-  tagName: string,
-  properties: Array<string | [string, unknown]> = [],
-  renderFn: (state: PropertyMap) => TemplateResult<1>,
-) {
-  const observed = properties.map((attribute) => {
-    if (Array.isArray(attribute)) {
-      return attribute[0];
-    }
-    return attribute;
-  });
-
-  class NewElement extends BaseElement {
-    constructor() {
-      super();
-
-      this.render = () => renderFn.bind(this)(this.properties);
-
-      for (const attribute of properties) {
-        if (typeof attribute === 'string') {
-          this.properties.set(attribute, true, { notify: false });
-        }
-
-        if (Array.isArray(attribute)) {
-          const [prop, value] = attribute;
-
-          this.properties.set(prop, value, { notify: false });
-        }
-      }
-    }
-
-    render() {
-      return html`<slot></slot>`;
-    }
-
-    connectedCallback(): void {
-      this.requestUpdate();
-    }
-
-    static observedAttributes = observed;
-  }
-
-  if (!customElements.get(tagName)) {
-    customElements.define(tagName, NewElement);
-  }
-
-  return document.createElement(tagName);
-}
-
-function autoBind<T extends object>(instance: T): void {
-  const prototype = Object.getPrototypeOf(instance);
-  const propertyNames = Object.getOwnPropertyNames(prototype) as Array<keyof T>;
-
-  for (const name of propertyNames) {
-    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
-    if (
-      descriptor &&
-      typeof descriptor.value === 'function' &&
-      name !== 'constructor'
-    ) {
-      const method = descriptor.value as unknown as (
-        ...args: unknown[]
-      ) => unknown;
-      Object.defineProperty(instance, name, {
-        value: method.bind(instance),
-        configurable: true,
-        writable: true,
-      });
-    }
-  }
 }

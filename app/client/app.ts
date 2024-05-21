@@ -15,4 +15,10 @@ if (!globalThis.URLPattern) {
 
     render(App(), document.getElementById('app')!);
   });
+} else {
+  const App = () => {
+    return html`<app-entry></app-entry>`;
+  };
+
+  render(App(), document.getElementById('app')!);
 }
