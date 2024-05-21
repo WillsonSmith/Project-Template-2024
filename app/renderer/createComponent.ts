@@ -17,12 +17,11 @@ export function createComponent<T extends { [key: string]: unknown }>({
   if (customElements.get(tagName) === undefined) {
     class RouteElement extends HTMLElement {
       private __stylesheet?: CSSStyleSheet;
-      private componentContainer = document.createElement('div');
+      shadowRoot!: ShadowRoot;
 
       constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.componentContainer.id = '#component';
       }
 
       connectedCallback() {
@@ -33,12 +32,8 @@ export function createComponent<T extends { [key: string]: unknown }>({
             this.shadowRoot.adoptedStyleSheets = [this.__stylesheet];
           }
         }
-        const fragment = document.createDocumentFragment();
 
-        fragment.appendChild(this.componentContainer);
-
-        render(Page(typedProperties), this.componentContainer);
-        this.shadowRoot!.append(fragment);
+        render(Page(typedProperties), this.shadowRoot);
       }
 
       _update() {
